@@ -586,7 +586,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
   for (AVMetadataMachineReadableCodeObject *metadata in metadataObjects) {
     for (id barcodeType in [self getBarCodeTypes]) {
-      if (metadata.type == barcodeType) {
+      if (metadata.type == barcodeType && metadata.stringValue != nil) {
 
         [self.bridge.eventDispatcher sendDeviceEventWithName:@"CameraBarCodeRead"
                                                         body:@{
